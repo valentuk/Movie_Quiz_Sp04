@@ -86,6 +86,7 @@ private var correctAnswers = 0
     let givenAnswer = false
     
     showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
+
     }
     
 @IBAction private func yesActionButtonClicked(_ sender: Any) {
@@ -93,31 +94,79 @@ private var correctAnswers = 0
     let givenAnswer = true
     
     showAnswerResult(isCorrect: givenAnswer == currentQuestion.correctAnswer)
+
     }
     
-    private func showAnswerResult(isCorrect: Bool) {
-        imageView.layer.masksToBounds = true
-        imageView.layer.borderWidth = 8
-        imageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
-    }
+   
     
     private func showNextQuestionOrResult () {
         if currentQuestionIndex == questions.count - 1 {
-            
+            let text = "Ваш результат: \(correctAnswers)/10"
+            let viewModel = QuizResultViewModel(
+                title: "Этот раунд окончен",
+                text: text,
+                buttonText: "Сыграть еще раз")
+            show(quiz: viewModel)
         } else {
             currentQuestionIndex += 1
-            
+            let nextQuestion = questions[currentQuestionIndex]
+            let viewModel = convert(model: nextQuestion)
+            show(quiz: viewModel)
         }
     }
     
+    private func showAnswerResult(isCorrect: Bool) {
+        if isCorrect {
+            correctAnswers += 1
+        }
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 8
+        imageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.showNextQuestionOrResult()
+        }
+        
+    }
+    
+
+    private struct QuizResultViewModel {
+        let title: String
+        let text: String
+        let buttonText: String
+    }
+    
+    private func show(quiz result: QuizResultViewModel) {
+        let alert = UIAlertController(
+            title: result.title,
+            message: result.text,
+            preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: result.buttonText , style: .default) {_ in
+            self.currentQuestionIndex = 0
+            self.correctAnswers = 0
+            
+            let firstQuestion = self.questions[self.currentQuestionIndex]
+            let viewModel = self.convert(model: firstQuestion)
+            self.show(quiz: viewModel)
+        }
+        
+        alert.addAction(action)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let currentQuestion = questions[currentQuestionIndex]
         show(quiz: convert(model: currentQuestion))
+       
+        
+        
     }
 
-    asdfa'sdlfk;askdfalksdf;lkasdfkadsfal;skdfj;j'
+    
     
     
 }

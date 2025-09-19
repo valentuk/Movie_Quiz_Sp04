@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
-    <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
->>>>>>> eb101b9 (sprint_05)
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,21 +32,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="23.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Вопрос:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puD-xi-1YF" userLabel="Question Title Label">
-<<<<<<< HEAD
-                                                <rect key="frame" x="0.0" y="0.0" width="338" height="23.5"/>
-=======
                                                 <rect key="frame" x="0.0" y="0.0" width="333.5" height="23.5"/>
->>>>>>> eb101b9 (sprint_05)
                                                 <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="20"/>
                                                 <color key="textColor" name="YP White"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVC-0A-hgc" userLabel="Index Label">
-<<<<<<< HEAD
-                                                <rect key="frame" x="338" y="0.0" width="36" height="23.5"/>
-=======
                                                 <rect key="frame" x="333.5" y="0.0" width="40.5" height="23.5"/>
->>>>>>> eb101b9 (sprint_05)
                                                 <fontDescription key="fontDescription" name="YSDisplay-Medium" family="YS Display" pointSize="20"/>
                                                 <color key="textColor" name="YP White"/>
                                                 <nil key="highlightedColor"/>
@@ -136,13 +120,9 @@
                     <connections>
                         <outlet property="counterLabel" destination="WVC-0A-hgc" id="UaN-56-sV1"/>
                         <outlet property="imageView" destination="1q0-9f-HM0" id="8zy-ml-jcr"/>
-<<<<<<< HEAD
-                        <outlet property="textLabel" destination="uue-I6-DTD" id="Ryq-xZ-9zN"/>
-=======
                         <outlet property="noUIButton" destination="9Pa-1S-bbm" id="RAv-Cg-VZZ"/>
                         <outlet property="textLabel" destination="uue-I6-DTD" id="Ryq-xZ-9zN"/>
                         <outlet property="yesUIButton" destination="St6-up-yjr" id="JDF-Va-IGm"/>
->>>>>>> eb101b9 (sprint_05)
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

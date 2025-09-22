@@ -41,12 +41,32 @@ protocol StatisticService {
 final class StatisticServiceImplementation: StatisticService {
     
     private enum Keys: String {
-        case correct, total, bestGame, gamesCount
+        case correct, total, bestGame, gamesCount, correctTotal, questionsTotal
     }
     
     var currentGame: GameRecord
     
     private let userDefaults = UserDefaults.standard
+    
+    private(set) var correctTotal: Int  {
+        get {
+            userDefaults.integer(forKey: Keys.correctTotal.rawValue)
+        }
+        
+        set {
+            userDefaults.set(newValue, forKey: Keys.correctTotal.rawValue)
+        }
+    }
+    
+    private(set) var questionsTotal: Int  {
+        get {
+            userDefaults.integer(forKey: Keys.questionsTotal.rawValue)
+        }
+        
+        set {
+            userDefaults.set(newValue, forKey: Keys.questionsTotal.rawValue)
+        }
+    }
     
     private(set) var totalAccuracy: Double {
         get {
@@ -88,8 +108,12 @@ final class StatisticServiceImplementation: StatisticService {
     
     func store(correct count: Int, total amount: Int) {
         
-        totalAccuracy = (totalAccuracy * Double(gamesCount) + Double(count) / Double(amount)) / Double(gamesCount + 1)
         gamesCount += 1
+        correctTotal = correctTotal + count
+        questionsTotal = questionsTotal + amount
+        
+        totalAccuracy = Double(correctTotal) / Double(questionsTotal)
+        
         currentGame = GameRecord(correct: count, total: amount, date: Date())
         
         if bestGame < currentGame {

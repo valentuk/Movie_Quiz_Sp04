@@ -65,11 +65,8 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         let alertModel = AlertModel(
             title: result.title,
             message: """
-                Ваш результат: \(statisticService.currentGame.correct)/\(statisticService.currentGame.total)\n
-                Количество сыгранных квизов: \(statisticService.gamesCount)\n
-                Рекорд: \(statisticService.bestGame.correct)/\(statisticService.bestGame.total) (\(statisticService.bestGame.date.dateTimeString))\n
-                Средняя точность: \(String(format: "%.2f", statisticService.totalAccuracy*100))%
-                """,
+             Ваш результат: \(statisticService.currentGame.correct)/\(statisticService.currentGame.total)\n Количество сыгранных квизов: \(statisticService.gamesCount)\n Рекорд: \(statisticService.bestGame.correct)/\(statisticService.bestGame.total) (\(statisticService.bestGame.date.dateTimeString))\n Средняя точность: \(String(format: "%.2f", statisticService.totalAccuracy*100))%
+             """,
             buttonText: result.buttonText,
             completion: { [weak self] in
                 guard let self = self else { return }

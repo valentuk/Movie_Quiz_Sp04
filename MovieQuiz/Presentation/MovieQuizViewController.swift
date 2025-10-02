@@ -3,8 +3,6 @@ import UIKit
 
 final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
-<<<<<<< HEAD
-=======
     func didLoadDataFromServer() {
         activityIndicator.isHidden = true // скрываем индикатор загрузки
         questionFactory?.requestNextQuestion()
@@ -14,7 +12,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         showNetworkError(message: error.localizedDescription) // возьмём в качестве сообщения описание ошибки
     }
     
->>>>>>> 6f60598 (sprint_06)
     // MARK: - Lifecycle
     
     private var questionFactory: QuestionFactoryProtocol?
@@ -32,20 +29,13 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var counterLabel: UILabel!
     
-<<<<<<< HEAD
-=======
     @IBOutlet weak private var activityIndicator: UIActivityIndicatorView!
->>>>>>> 6f60598 (sprint_06)
     
     private func convert(model: QuizQuestion) -> QuizStepViewModel {
         return QuizStepViewModel(
             image: UIImage(data: model.image) ?? UIImage(),
             question: model.question,
             questionNumber: "\(currentQuestionIndex + 1)/\(questionAmount)")
-<<<<<<< HEAD
-        return questionStep
-=======
->>>>>>> 6f60598 (sprint_06)
     }
     
     private func show(quiz step: QuizStepViewModel) {
@@ -121,13 +111,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         
         statisticService = StatisticServiceImplementation()
         
-<<<<<<< HEAD
-        questionFactory = QuestionFactory(delegate: self)
-        
-        questionFactory?.requestNextQuestion()
-        
-        
-=======
         questionFactory = QuestionFactory(moviesLoader: MoviesLoader(), delegate: self)
         questionFactory?.loadData()
         
@@ -168,7 +151,6 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         alertPresenter?.viewController = self
         
         alertPresenter?.requestAlert()
->>>>>>> 6f60598 (sprint_06)
     }
     
     private func turnOnButtons() {

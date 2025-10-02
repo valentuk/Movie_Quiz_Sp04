@@ -9,4 +9,9 @@ import Foundation
 
 protocol QuestionFactoryProtocol {
     func requestNextQuestion()
+<<<<<<< HEAD
 } 
+=======
+    func loadData()
+}
+>>>>>>> 6f60598 (sprint_06)

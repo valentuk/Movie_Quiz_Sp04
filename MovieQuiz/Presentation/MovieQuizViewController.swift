@@ -3,6 +3,18 @@ import UIKit
 
 final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     
+<<<<<<< HEAD
+=======
+    func didLoadDataFromServer() {
+        activityIndicator.isHidden = true // скрываем индикатор загрузки
+        questionFactory?.requestNextQuestion()
+    }
+    
+    func didFailToLoadData(with error: Error) {
+        showNetworkError(message: error.localizedDescription) // возьмём в качестве сообщения описание ошибки
+    }
+    
+>>>>>>> 6f60598 (sprint_06)
     // MARK: - Lifecycle
     
     private var questionFactory: QuestionFactoryProtocol?
@@ -20,13 +32,20 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var counterLabel: UILabel!
     
+<<<<<<< HEAD
+=======
+    @IBOutlet weak private var activityIndicator: UIActivityIndicatorView!
+>>>>>>> 6f60598 (sprint_06)
     
     private func convert(model: QuizQuestion) -> QuizStepViewModel {
-        let questionStep = QuizStepViewModel(
-            image: UIImage(named: model.image) ?? UIImage(),
+        return QuizStepViewModel(
+            image: UIImage(data: model.image) ?? UIImage(),
             question: model.question,
             questionNumber: "\(currentQuestionIndex + 1)/\(questionAmount)")
+<<<<<<< HEAD
         return questionStep
+=======
+>>>>>>> 6f60598 (sprint_06)
     }
     
     private func show(quiz step: QuizStepViewModel) {
@@ -102,11 +121,54 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate {
         
         statisticService = StatisticServiceImplementation()
         
+<<<<<<< HEAD
         questionFactory = QuestionFactory(delegate: self)
         
         questionFactory?.requestNextQuestion()
         
         
+=======
+        questionFactory = QuestionFactory(moviesLoader: MoviesLoader(), delegate: self)
+        questionFactory?.loadData()
+        
+        showLoadingIndicator()
+    }
+    
+    private func showLoadingIndicator() {
+        activityIndicator.isHidden = false // говорим, что индикатор загрузки не скрыт
+        activityIndicator.startAnimating() // включаем анимацию
+        
+        textLabel.text = ""
+        counterLabel.text = ""
+    }
+    
+    private func hideLoadingIndicator() {
+        activityIndicator.isHidden = true // говорим, что индикатор загрузки скрыт
+        activityIndicator.startAnimating() // включаем анимацию
+    }
+    
+    private func showNetworkError(message: String) {
+        hideLoadingIndicator() // скрываем индикатор загрузки
+        
+        // создайте и покажите алерт
+        
+        let alertModel = AlertModel(
+            title: "Ошибка",
+            message: message,
+            buttonText: "Попробовать ещё раз",
+            completion: { [weak self] in
+                guard let self = self else { return }
+                
+                self.showLoadingIndicator()
+                self.questionFactory?.loadData()
+                            
+            }
+        )
+        alertPresenter = AlertPresenter(alertModel: alertModel)
+        alertPresenter?.viewController = self
+        
+        alertPresenter?.requestAlert()
+>>>>>>> 6f60598 (sprint_06)
     }
     
     private func turnOnButtons() {

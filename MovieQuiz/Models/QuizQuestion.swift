@@ -8,7 +8,11 @@
 import Foundation
 
 struct QuizQuestion {
+<<<<<<< HEAD
     let image: String
+=======
+    let image: Data
+>>>>>>> 6f60598 (sprint_06)
     let question: String
     let correctAnswer: Bool
 }

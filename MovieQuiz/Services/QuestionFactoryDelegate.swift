@@ -9,5 +9,10 @@ import Foundation
 
 protocol QuestionFactoryDelegate: AnyObject {
     func didRecieveNextQuestion(question: QuizQuestion?)
+<<<<<<< HEAD
     
+=======
+    func didLoadDataFromServer() // сообщение об успешной загрузке
+    func didFailToLoadData(with error: Error) // сообщение об ошибке загрузки
+>>>>>>> 6f60598 (sprint_06)
 }

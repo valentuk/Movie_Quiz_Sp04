@@ -36,7 +36,7 @@ final class MovieQuizUITests: XCTestCase {
         let secondPoster = app.images["Poster"]
         let indexLabel = app.staticTexts["Index"]
         
-        sleep(3)
+        sleep(5)
         
         XCTAssertTrue(indexLabel.label == "2/10")
         XCTAssertFalse(firstPoster == secondPoster)
@@ -50,7 +50,7 @@ final class MovieQuizUITests: XCTestCase {
         let secondPoster = app.images["Poster"]
         let indexLabel = app.staticTexts["Index"]
         
-        sleep(3)
+        sleep(5)
         
         XCTAssertTrue(indexLabel.label == "2/10")
         XCTAssertFalse(firstPoster == secondPoster)
@@ -60,9 +60,10 @@ final class MovieQuizUITests: XCTestCase {
         
         for _ in 1...10 {
             app.buttons["No"].tap()
+            sleep(2)
         }
         
-        sleep(3)
+        sleep(5)
         
         let alert = app.alerts["quizAlert"]
         
@@ -75,6 +76,7 @@ final class MovieQuizUITests: XCTestCase {
     func testAlertDismiss() {
         for _ in 1...10 {
             app.buttons["No"].tap()
+            sleep(2)
         }
         
         sleep(2)
